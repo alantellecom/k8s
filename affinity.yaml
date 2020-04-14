@@ -4,8 +4,14 @@ spec:
       requiredDuringSchedulingIgnoredDuringExecution:
         nodeSelectorTerms:
         - matchExpressions:
-          - key: kubernetes.io/e2e-az-name
+          - key: node
             operator: In
             values:
-            - e2e-az1
-            - e2e-az2
+            - master
+            - no_exist
+          matchExpressions:
+          - key: env
+            operator: In
+            values:
+            - dev
+
