@@ -36,6 +36,18 @@ spec:
   - to:
     - ipBlock:
         cidr: 10.0.0.0/24
+        except:
+        - 172.17.1.0/24
+    - namespaceSelector:
+        matchLabels:
+          project: myproject
+    - podSelector:
+        matchLabels:
+          role: frontend-1
     ports:
     - protocol: TCP
       port: 5978
+  - to:
+    - podSelector:
+        matchLabels: 
+          role: frontend-1
